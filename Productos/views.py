@@ -3,7 +3,8 @@ from .forms import ProductoForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .logic.logic_producto import create_producto, get_productos
+from .logic.logic_producto import create_producto, get_productos, edit_producto, delete_producto
+
 
 def producto_list(request):
     productos = get_productos()
@@ -29,3 +30,39 @@ def producto_create(request):
     }
 
     return render(request, 'Producto/ProductoCreate.html', context)
+
+def producto_edit(request):
+
+    if request.method == 'PUT':
+        form = ProductoForm(request.PUT)
+        if form.is_valid():
+            edit_producto(form)
+            messages.add_message(request, messages.SUCCESS, 'Producto edit successful')
+            return HttpResponseRedirect(reverse('productoEdit'))
+        else:
+            print(form.errors)
+    else:
+        form = ProductoForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'Producto/ProductoEdit.html', context)
+
+
+def producto_delete(request, id):
+
+    productos =delete_producto(id)
+    context = {
+        'producto_list': productos
+    }
+    return render(request, 'Producto/productos.html', context)
+
+def admin_list(request):
+    productos = get_productos()
+    context = {
+        'producto_list': productos
+    }
+    return render(request, 'Producto/productosAdmin.html', context)
+
