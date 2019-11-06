@@ -1,8 +1,10 @@
+from abc import ABC
+
 import requests
 from social_core.backends.oauth import BaseOAuth2
 
 
-class Auth0(BaseOAuth2):
+class Auth0(BaseOAuth2, ABC):
     """Auth0 OAuth authentication backend"""
     name = 'auth0'
     SCOPE_SEPARATOR = ' '

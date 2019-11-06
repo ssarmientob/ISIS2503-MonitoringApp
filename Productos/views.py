@@ -65,7 +65,7 @@ def producto_delete(request, id):
 
 @login_required
 def admin_list(request):
-   
+
         return HttpResponse("Unauthorized User")
 
 
