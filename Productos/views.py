@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .forms import ProductoForm
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .logic.logic_producto import create_producto, get_productos, edit_producto, delete_producto
+from django.contrib.auth.decorators import login_required
+
 
 
 def producto_list(request):
@@ -13,6 +15,7 @@ def producto_list(request):
     }
     return render(request, 'Producto/productos.html', context)
 
+@login_required
 def producto_create(request):
     if request.method == 'POST':
         form = ProductoForm(request.POST)
@@ -31,6 +34,7 @@ def producto_create(request):
 
     return render(request, 'Producto/ProductoCreate.html', context)
 
+@login_required
 def producto_edit(request):
 
     if request.method == 'PUT':
@@ -50,7 +54,7 @@ def producto_edit(request):
 
     return render(request, 'Producto/ProductoEdit.html', context)
 
-
+@login_required
 def producto_delete(request, id):
 
     productos =delete_producto(id)
@@ -59,10 +63,11 @@ def producto_delete(request, id):
     }
     return render(request, 'Producto/productos.html', context)
 
+@login_required
 def admin_list(request):
-    productos = get_productos()
-    context = {
-        'producto_list': productos
-    }
-    return render(request, 'Producto/productosAdmin.html', context)
+   
+        return HttpResponse("Unauthorized User")
+
+
+
 
