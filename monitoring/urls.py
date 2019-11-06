@@ -23,4 +23,6 @@ urlpatterns = [
     path('', include('measurements.urls')),
     path('', include('variables.urls')),
     path('', include('Productos.urls')),
+    path('', include('Clientes.urls')),
+
 ]
