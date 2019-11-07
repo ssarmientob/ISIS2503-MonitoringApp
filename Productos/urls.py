@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [
     path('productos/', views.producto_list),
-    path('productosAdmin/', views.admin_list),
+    path('productosAdmin/', views.admin_list, name='productoList'),
     path('productocreate/', csrf_exempt(views.producto_create), name='productoCreate'),
     path('productoedit/', csrf_exempt(views.producto_edit), name='productoEdit'),
 ]
