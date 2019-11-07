@@ -65,10 +65,14 @@ def producto_delete(request, id):
     return render(request, 'Producto/productos.html', context)
 
 
-
+@login_required
 def admin_list(request):
-    productos = get_productos()
-    context = {
-        'producto_list': productos
-    }
-    return render(request, 'Producto/productosAdmin.html', context)
+    role = getRole(request)
+    if role == "Administracion Antusu":
+        productos = get_productos()
+        context = {
+            'producto_list': productos
+            }
+        return render(request, 'Producto/productosAdmin.html', context)
+    else:
+        return HttpResponse("Unauthorized User")
