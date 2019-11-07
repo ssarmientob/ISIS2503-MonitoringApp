@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'measurements',
     'variables',
     'Productos',
+    'Clientes',
     'social_django'
 ]
 
