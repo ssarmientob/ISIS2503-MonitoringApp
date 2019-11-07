@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'variables',
     'Productos',
     'Clientes',
-    'social_django'
+    'social_django',
 ]
 
 MIDDLEWARE = [
