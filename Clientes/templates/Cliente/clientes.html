@@ -40,7 +40,7 @@
                             <td>{{ cliente.idd }}</td>
                             <td>{{ cliente.direccion }}</td>
                             <td>{{ cliente.correo }}</td>
-                            <td>{{ cliente.carrito }}</td>
+                            <td>{% for prod in clientes.carrito.all %}{{prod.nombre}} {% endfor %}</td>
                             </tr>
 
                         {% endfor %}
