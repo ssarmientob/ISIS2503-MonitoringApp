@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = "/login/auth0"
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "https://isis2503-miguelmunoz2019.auth0.com/v2/logout?returnTo=http%3A%2F%2F3.90.6.128:8000"
+LOGOUT_REDIRECT_URL = "https://isis2503-miguelmunoz2019.auth0.com/v2/logout?returnTo=http%3A%2F%2F3.87.5.201:8000"
 SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
 SOCIAL_AUTH_AUTH0_DOMAIN = 'isis2503-miguelmunoz2019.auth0.com'
 SOCIAL_AUTH_AUTH0_KEY = 'yHCYjElAWWVtEJgHlYWwwzqoGcXmTwS2'

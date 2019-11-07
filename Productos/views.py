@@ -21,6 +21,7 @@ def getRole(request):
     role = userinfo['https://isis2503-miguelmunoz2019:auth0:com/role']
     return role
 
+
 def producto_list(request):
     productos = get_productos()
     context = {
