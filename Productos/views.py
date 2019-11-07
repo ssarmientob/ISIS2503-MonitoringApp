@@ -69,6 +69,9 @@ def admin_list(request):
     role = getRole(request)
     if role == "Administracion Antusu":
         productos = get_productos()
-        return render(request, 'Producto/productosAdmin.html')
+        context = {
+            'producto_list': productos
+        }
+        return render(request, 'Producto/productosAdmin.html', context)
     else:
         return HttpResponse("Unauthorized User")
