@@ -1,8 +1,10 @@
+from abc import ABC
+
 import requests
 from social_core.backends.oauth import BaseOAuth2
 
 
-class Auth0(BaseOAuth2):
+class Auth0(BaseOAuth2, ABC):
     """Auth0 OAuth authentication backend"""
 
 
@@ -44,5 +46,5 @@ def getRole(request):
     headers = {'authorization': 'Bearer ' + accessToken}
     resp = requests.get(url, headers=headers)
     userinfo = resp.json()
-    role = userinfo['https://isis2503-miguelmunoz2019:auth0:com/role']
+    role = userinfo['https://isis2503-miguelmunoz2019.auth0.com/role']
     return (role)
