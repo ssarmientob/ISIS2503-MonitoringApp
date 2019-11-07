@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .logic.logic_producto import create_producto, get_productos, edit_producto, delete_producto
 from django.contrib.auth.decorators import login_required
-
+from monitoring.auth0backend import getRole
 
 
 def producto_list(request):
@@ -67,7 +67,7 @@ def producto_delete(request, id):
 
 @login_required
 def admin_list(request):
-    role = None
+    role = getRole(request)
     if role == "Administracion Antusu":
         productos = get_productos()
         context = {
