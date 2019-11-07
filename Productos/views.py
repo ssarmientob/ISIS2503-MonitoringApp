@@ -64,7 +64,7 @@ def producto_delete(request, id):
     }
     return render(request, 'Producto/productos.html', context)
 
-
+@login_required
 def admin_list(request):
     role = getRole(request)
     if role == "Administracion Antusu":
