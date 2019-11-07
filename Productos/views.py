@@ -5,8 +5,21 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .logic.logic_producto import create_producto, get_productos, edit_producto, delete_producto
 from django.contrib.auth.decorators import login_required
-from monitoring.auth0backend import getRole
+import requests
+from abc import ABC
+from social_core.backends.oauth import BaseOAuth2
 
+
+def getRole(request):
+    user = request.user
+    auth0user = user.social_auth.get(provider="auth0")
+    accessToken = auth0user.extra_data['access_token']
+    url = "https://isis2503-miguelmunoz2019.auth0.com/userinfo"
+    headers = {'authorization': 'Bearer ' + accessToken}
+    resp = requests.get(url, headers=headers)
+    userinfo = resp.json()
+    role = userinfo['https://isis2503-miguelmunoz2019:auth0:com/role']
+    return role
 
 def producto_list(request):
     productos = get_productos()
