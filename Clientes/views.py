@@ -19,6 +19,7 @@ def getRole(request):
     role = userinfo['https://isis2503-miguelmunoz2019:auth0:com/role']
     return role
 
+
 @login_required
 def cliente_list(request):
     role = getRole(request)
