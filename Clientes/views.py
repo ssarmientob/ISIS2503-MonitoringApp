@@ -19,14 +19,18 @@ def getRole(request):
     role = userinfo['https://isis2503-miguelmunoz2019:auth0:com/role']
     return role
 
-
 @login_required
 def cliente_list(request):
     role = getRole(request)
     if role == "Administracion Antusu":
-        return render(request, 'Cliente/clientes.html')
+        clientes = get_clientes()
+        context = {
+            'cliente_list': clientes
+        }
+        return render(request, 'Cliente/clientes.html', context)
     else:
         return HttpResponse("Unauthorized User")
+
 
 
 def cliente_create(request):
