@@ -23,7 +23,7 @@ def getRole(request):
 @login_required
 def cliente_list(request):
     role = getRole(request)
-    if role == "Cliente Antusu":
+    if role == "Administracion Antusu":
         return render(request, 'Cliente/clientes.html')
     else:
         return HttpResponse("Unauthorized User")
