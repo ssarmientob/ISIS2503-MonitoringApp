@@ -20,12 +20,13 @@ def getRole(request):
     return role
 
 
+@login_required
 def cliente_list(request):
-    clientes = get_clientes()
-    context = {
-        'cliente_list': clientes
-    }
-    return render(request, 'Cliente/clientes.html', context)
+    role = getRole(request)
+    if role == "Cliente Antusu":
+        return render(request, 'Cliente/clientes.html')
+    else:
+        return HttpResponse("Unauthorized User")
 
 
 def cliente_create(request):
