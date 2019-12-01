@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('measurements.urls')),
     path('', include('variables.urls')),
     path('', include('Productos.urls')),
+    path('', include('Inventario.urls')),
     path('', include('Clientes.urls')),
     path('login/', views.login),
     path(r'', include('django.contrib.auth.urls')),

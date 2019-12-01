@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .forms import ProductoForm
+from .forms import InventarioForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from .logic.logic_producto import create_producto, get_productos, edit_producto, delete_producto
+from .logic.logic_inventario import create_inventario, get_inventarios, edit_inventario, delete_inventario
 from django.contrib.auth.decorators import login_required
 import requests
 from abc import ABC

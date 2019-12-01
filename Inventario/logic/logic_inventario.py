@@ -1,7 +1,7 @@
 from ..models import Inventario
 
 def get_inventarios():
-    queryset = Inventario.objects.all().order_by('nombre')[:10]
+    queryset = Inventario.objects.all().order_by('referencia')[:10]
     return (queryset)
 
 def create_inventario(form):
@@ -17,5 +17,5 @@ def edit_inventario(form):
 
 def delete_inventario(id):
     Inventario.objects.all.remove(id)
-    queryset = Inventario.objects.all().order_by('nombre')
+    queryset = Inventario.objects.all().order_by('referencia')
     return (queryset)

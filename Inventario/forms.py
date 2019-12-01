@@ -3,7 +3,7 @@ from .models import Inventario
 
 class InventarioForm(forms.ModelForm):
     class Meta:
-        model = Producto
+        model = Inventario
         fields = [
             'referencia',
             'cantidad',

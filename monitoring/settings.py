@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'variables',
     'Productos',
     'Clientes',
+    'Inventario',
     'social_django',
 ]
 
